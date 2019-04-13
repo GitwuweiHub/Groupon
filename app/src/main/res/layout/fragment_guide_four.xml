@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/new_comer_guide_fg_4"
+    tools:context=".fragment.GuideFour">
+
+    <Button
+        android:id="@+id/bt_turn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="立即开启"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="30sp"
+        android:background="@drawable/btn_turn_select"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="bottom|center_horizontal" />
+
+</FrameLayout>
