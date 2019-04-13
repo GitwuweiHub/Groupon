@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
 //                SharedPreferences sp = getSharedPreferences("splash-info",MODE_PRIVATE);
 //                boolean first = sp.getBoolean(Constant.FIRST,true);
                 //根据是否是第一次使用进行相应的界面的跳转
-                if(true){
+                if(spUtil.isFirst()){
 //                    SharedPreferences.Editor editor = sp.edit();
 //                    editor.putBoolean(Constant.FIRST,false);
 //                    editor.commit();
