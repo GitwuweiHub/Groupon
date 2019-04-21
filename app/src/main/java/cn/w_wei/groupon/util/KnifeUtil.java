@@ -9,6 +9,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import cn.w_wei.groupon.adapter.DealAdapter;
+
 public class KnifeUtil {
 
     public static void bind(Activity activity){
@@ -16,7 +18,7 @@ public class KnifeUtil {
         setOnClick(activity);
     }
 
-    public static void bind(Fragment fragment, View v){
+    public static void bind(Object obj,View v){
 
     }
 

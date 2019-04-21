@@ -3,12 +3,14 @@ package cn.w_wei.groupon.util;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -26,7 +28,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.w_wei.groupon.R;
 import cn.w_wei.groupon.app.MyApp;
+import cn.w_wei.groupon.bean.TuanBean;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -215,4 +219,32 @@ public class HttpUtil {
     public static void testRetrofit(Context context){
         RetrofitClient.getInstance().test();
     }
+
+    public static void getDailyDealsByVolley(String city,Response.Listener<TuanBean> listener){
+//        VolleyClient.getInstance().getDailyDeals(city,listener);
+     VolleyClient.getInstance().getDailyDeals2(city,listener);
+    }
+
+    public static void getDailyDealsByRetrofit(String city,Callback<String> callback){
+        RetrofitClient.getInstance().getDailyDeals(city,callback);
+    }
+
+    public static void getDailyDealsByRetrofit2(String city,Callback<TuanBean> callback){
+        RetrofitClient.getInstance().getDailyDeals2(city,callback);
+    }
+
+    public static void getDailyDealsByRetrofit3(String city,Callback<TuanBean> callback){
+        RetrofitClient.getInstance().getDailyDeals3(city,callback);
+    }
+
+    public static void loadImage(String url, ImageView imageView){
+        VolleyClient.getInstance().loadImage(url,imageView);
+    }
+
+    public static void displayImage(String url,ImageView imageView){
+        Picasso.with(MyApp.CONTEXT).load(url).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(imageView);
+
+    }
+
+
 }

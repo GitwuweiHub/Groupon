@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:paddingStart="5dp">
+    <ImageView
+        android:id="@+id/iv_item_deal_image"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_edit_image_01"
+        android:layout_gravity="center_vertical"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/tv_item_deal_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="XXXXXXXX"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/tv_item_deal_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="500m"
+                android:textSize="17sp"/>
 
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_item_deal_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XXXXX"
+            android:textSize="17sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/tv_item_deal_price"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="¥30"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/tv_item_deal_sellcount"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="售出50份"
+                android:textSize="17sp"
+                android:gravity="end"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

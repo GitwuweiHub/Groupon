@@ -11,39 +11,23 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tv_aiche"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="爱车"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_aiche"/>
         <TextView
             android:id="@+id/tv_chuanxiang"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="串香"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_chuanxiang"/>
         <TextView
             android:id="@+id/tv_daojia"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="到家"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_daojia"/>
         <TextView
             android:id="@+id/tv_dianying"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="电影"
-            android:gravity="center_horizontal"
-            android:textSize="24sp"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_dianying"/>
     </LinearLayout>
 
@@ -54,39 +38,23 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tv_dujia"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="度假"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_dujia"/>
         <TextView
             android:id="@+id/tv_hangjia"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="行家"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_hangjia"/>
         <TextView
             android:id="@+id/tv_huoguo"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="火锅"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_huoguo"/>
         <TextView
             android:id="@+id/tv_jianshen"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="健身"
-            android:gravity="center_horizontal"
-            android:textSize="24sp"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_jianshen"/>
     </LinearLayout>
 

@@ -11,39 +11,23 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tv_jiazhuang"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="家装"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_jiazhuang"/>
         <TextView
             android:id="@+id/tv_jiehun"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="结婚"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_jiehun"/>
         <TextView
             android:id="@+id/tv_jipiao"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="机票"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_jipiao"/>
         <TextView
             android:id="@+id/tv_jiudian"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="酒店"
-            android:gravity="center_horizontal"
-            android:textSize="24sp"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_jiudian"/>
     </LinearLayout>
 
@@ -54,39 +38,23 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tv_ktv"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="KTV"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_ktv"/>
         <TextView
             android:id="@+id/tv_liren"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="丽人"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_liren"/>
         <TextView
             android:id="@+id/tv_meishi"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="美食"
-            android:textSize="24sp"
-            android:gravity="center_horizontal"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_meishi"/>
         <TextView
             android:id="@+id/tv_zhoubian"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="周边"
-            android:gravity="center_horizontal"
-            android:textSize="24sp"
+            style="@style/TextViewStyle"
             android:drawableTop="@drawable/ic_home_zhoubianyou"/>
     </LinearLayout>
 
