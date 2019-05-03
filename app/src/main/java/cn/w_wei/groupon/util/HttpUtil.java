@@ -1,7 +1,8 @@
 package cn.w_wei.groupon.util;
 
-import android.app.Application;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -14,6 +15,8 @@ import com.squareup.picasso.Picasso;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,6 +33,8 @@ import java.util.Map;
 
 import cn.w_wei.groupon.R;
 import cn.w_wei.groupon.app.MyApp;
+import cn.w_wei.groupon.bean.BusinessBean;
+import cn.w_wei.groupon.bean.DistrictBean;
 import cn.w_wei.groupon.bean.TuanBean;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -246,5 +251,49 @@ public class HttpUtil {
 
     }
 
+    public static void getFoodsByVolley(String city, String region, Response.Listener listener){
+        VolleyClient.getInstance().getFoods(city,region,listener);
+    }
+
+    public static void getFoodsByRetrofit(String city, String region, Callback<BusinessBean> callback){
+        RetrofitClient.getInstance().getFoods(city,region,callback);
+    }
+
+    public static void getDistricsByRetrofit(String city, Callback<DistrictBean> callback){
+        RetrofitClient.getInstance().getDistricts(city,callback);
+    }
+
+    public static void getComment(final String url, final OnResponseListener<Document> listener){
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    final Document document = Jsoup.connect(url).get();
+                    Log.i("TAG","document-->"+document);
+                    //利用handler提交一个任务到handler所服务的那个线程去执行runnable对象的run方法
+                    //在哪个县城调用无参的构造器构造的handler，它就服务于谁
+                    //加一个参数即主线程的looper即可让它服务于主线程
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            listener.onResponse(document);
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+
+    }
+
+    public static void getCommentByVolley(String url, Response.Listener<String> listener){
+        VolleyClient.getInstance().getComment(url,listener);
+    }
+
+    public interface OnResponseListener<T>{
+        void onResponse(T t);
+    }
 
 }

@@ -1,6 +1,9 @@
 package cn.w_wei.groupon.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +38,7 @@ import cn.w_wei.groupon.util.DBUtil;
 import cn.w_wei.groupon.util.KnifeUtil;
 import cn.w_wei.groupon.util.OnClick;
 import cn.w_wei.groupon.util.PinyinUtil;
+import cn.w_wei.groupon.view.LetterView;
 
 import static cn.w_wei.groupon.util.ChooseArea.ADDRESS;
 
@@ -46,6 +50,8 @@ public class CityActivity extends AppCompatActivity {
     @BindView(R.id.rv_recycler)
     private RecyclerView rvPosition;
     private CityAdapter adapter;
+    @BindView(R.id.lv_letter)
+    private LetterView letterView;
 
     private List<String> datas;
     private List<CityNameBean> cityNameBeans;
@@ -55,6 +61,8 @@ public class CityActivity extends AppCompatActivity {
 
     private DBUtil dbUtil;
 
+    private InnerBroadcast receiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +70,14 @@ public class CityActivity extends AppCompatActivity {
         KnifeUtil.bind(this);
         dbUtil = new DBUtil(this);
         initialPosition();
+        registerBroadCast();
+    }
+
+    private void registerBroadCast() {
+        receiver = new InnerBroadcast();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("letter-view");
+        registerReceiver(receiver,filter);
     }
 
     @Override
@@ -109,8 +125,8 @@ public class CityActivity extends AppCompatActivity {
         rvPosition.setAdapter(adapter);
         View headerView = LayoutInflater.from(this).inflate(R.layout.just_for_test,rvPosition,false);
         adapter.addHeaderView(headerView);
-        //设置下划线，也可以加在item布局中
-        rvPosition.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        //设置下划线，也可以加在item布局中,现在加载布局中
+//        rvPosition.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         adapter.setOnItemClickListener(new CityAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position, CityNameBean bean) {
@@ -124,6 +140,38 @@ public class CityActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        letterView.setOnTouchLetterListener(new LetterView.OnTouchLetterListener() {
+            @Override
+            public void onTouchLetter(LetterView view, String letter) {
+                int position = -1;
+//                for(CityNameBean bean:cityNameBeans){
+//                    String str = String.valueOf(bean.getLetter());
+//                    if(str.equals(letter)){
+//                        position = cityNameBeans.indexOf(bean) + 1;
+//                        break;
+//                    }
+//                }
+
+                if("热门".equals(letter)){
+                    rvPosition.scrollToPosition(0);
+                }else{
+                    position = adapter.getPositionForSection(letter.charAt(0));
+                    if(adapter.getHeaderView() != null){
+                        position += 1;
+                    }
+                    LinearLayoutManager linearLayoutManager = (LinearLayoutManager) rvPosition.getLayoutManager();
+                    int first = linearLayoutManager.findFirstVisibleItemPosition();
+                    int last = linearLayoutManager.findLastVisibleItemPosition();
+                    //移动到指定的位置，
+                    // 第一参数是移动到指定位置，并且指定item位于顶部
+                    // 第二参数是在指定item位于当前RecyclerView顶部时，偏移的像素值（正数向下偏移，负数向上偏移），不偏移写0即可
+                    linearLayoutManager.scrollToPositionWithOffset(position,0);
+                }
+
+            }
+        });
+
     }
 
     private void queryProvince() {
@@ -286,5 +334,22 @@ public class CityActivity extends AppCompatActivity {
             tvForeign.setBackgroundResource(R.drawable.city_foreign_white);
             tvForeign.setTextColor(Color.parseColor("#232323"));
         }
+    }
+
+    private class InnerBroadcast extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if("letter-view".equals(action)){
+//                Toast.makeText(context,intent.getStringExtra("letter"),Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(receiver);
+        super.onDestroy();
     }
 }

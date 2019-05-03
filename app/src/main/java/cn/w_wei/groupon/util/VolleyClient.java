@@ -2,6 +2,7 @@ package cn.w_wei.groupon.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.LruCache;
 import android.widget.ImageView;
@@ -174,7 +175,7 @@ public class VolleyClient {
      * @param imageView 显示图片的控件
      */
     public void loadImage(String url, ImageView imageView){
-        ImageLoader.ImageListener listener = ImageLoader.getImageListener(imageView, R.drawable.ic_edit_image_01,R.mipmap.ic_launcher);
+        ImageLoader.ImageListener listener = ImageLoader.getImageListener(imageView, R.drawable.ic_edit_image_01,R.drawable.bucket_no_picture);
         imageLoader.get(url,listener);
     }
 
@@ -278,5 +279,30 @@ public class VolleyClient {
         protected void deliverResponse(TuanBean tuanBean) {
             listener.onResponse(tuanBean);
         }
+    }
+
+    public void getFoods(String city, String region, Response.Listener listener){
+        Map<String,String> params = new HashMap<>();
+        params.put("city",city);
+        params.put("category","美食");
+        if(!TextUtils.isEmpty(region)){
+            params.put("region",region);
+        }
+        for(Map.Entry entry:params.entrySet()){
+
+        }
+        String url = HttpUtil.getURL("http://api.dianping.com/v1/business/find_businesses",params);
+        StringRequest request = new StringRequest(url, listener, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.i("TAG",volleyError.getMessage());
+            }
+        });
+        queue.add(request);
+    }
+
+    public void getComment(String url,Response.Listener<String> listener){
+        StringRequest request = new StringRequest(url,listener,null);
+        queue.add(request);
     }
 }

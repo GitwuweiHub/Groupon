@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="口味:8.5 环境:8.0 服务:8.0  "
+        android:textSize="15sp"
+        android:gravity="center_vertical"
+        android:drawableEnd="@drawable/search_icon_wifi"/>
+    <TextView
+        android:id="@+id/tv_locate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="牛街长条形建筑二楼"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/detail_icon_locate"
+        android:drawableEnd="@drawable/detail_icon_arrow"/>
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="18796364312"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center_vertical"
+        android:drawableEnd="@drawable/detail_icon_arrow"
+        android:drawableStart="@drawable/detail_icon_phone"/>
+
+</LinearLayout>

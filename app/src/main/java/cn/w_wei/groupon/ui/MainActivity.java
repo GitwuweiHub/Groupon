@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,23 +49,18 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     //头部编辑
-    @BindView(R.id.tv_city)
-    TextView tvCity;
-    @BindView(R.id.iv_add)
-    ImageView ivAdd;
-    @BindView(R.id.menu_add)
-    View menuAdd;
+    @BindView(R.id.tv_city) private TextView tvCity;
+    @BindView(R.id.iv_add) private ImageView ivAdd;
+    @BindView(R.id.menu_add) private View menuAdd;
 
     //中段
-    @BindView(R.id.lv_refresh)
-    private PullToRefreshListView lvRefresh;
+    @BindView(R.id.lv_refresh) private PullToRefreshListView lvRefresh;
     ListView listView;
     List<TuanBean.Deal> datas;
     DealAdapter adapter;
 
     //脚部
-    @BindView(R.id.rg_group)
-    RadioGroup rgGroup;//用于控制FrameLayout，暂时不用
+    @BindView(R.id.rg_group) RadioGroup rgGroup;//用于控制FrameLayout，暂时不用
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +74,17 @@ public class MainActivity extends AppCompatActivity {
     private void initialRadioGroup() {
         RadioButton radioButton = (RadioButton) rgGroup.getChildAt(0);
         radioButton.setChecked(true);
+        rgGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) rgGroup.getChildAt(2);
+                if(radioButton.isChecked()){
+                    Intent intent = new Intent(MainActivity.this,FindActivity.class);
+                    intent.putExtra("from","main");
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @OnClick(values = {R.id.tv_city})
@@ -145,7 +152,9 @@ public class MainActivity extends AppCompatActivity {
         lvRefresh.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+
                 new Handler().postDelayed(new Runnable() {
+
                     @Override
                     public void run() {
 //                        datas.add(0,"新增内容");
@@ -155,6 +164,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 },5000);
 //                refresh();
+            }
+        });
+
+        lvRefresh.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
+            @Override
+            public void onLastItemVisible() {
+                Toast.makeText(MainActivity.this,"End of List!",Toast.LENGTH_SHORT).show();
             }
         });
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -208,6 +224,17 @@ public class MainActivity extends AppCompatActivity {
             public Object instantiateItem(@NonNull ViewGroup container, int position) {
                 int layoutId = resIds[position % 3];
                 View v = LayoutInflater.from(MainActivity.this).inflate(layoutId,viewPager,false);
+                if(position%3 == 1){
+                    TextView tvMeiShi = v.findViewById(R.id.tv_meishi);
+                    tvMeiShi.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MainActivity.this,BusinessActivity.class);
+                            intent.putExtra("city",tvCity.getText().toString());
+                            startActivity(intent);
+                        }
+                    });
+                }
                 container.addView(v);
                 return v;
             }
@@ -253,6 +280,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.i("TAG","onResume()");
         refresh();
+        RadioButton radioButton = (RadioButton) rgGroup.getChildAt(0);
+        radioButton.setChecked(true);
     }
 
     /**

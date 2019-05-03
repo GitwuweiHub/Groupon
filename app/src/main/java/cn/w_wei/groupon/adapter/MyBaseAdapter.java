@@ -11,7 +11,7 @@ import java.util.List;
 
 public abstract class MyBaseAdapter<T> extends BaseAdapter {
 
-    private Context context;
+    public Context context;
     public LayoutInflater inflater;
     public List<T> datas;
 

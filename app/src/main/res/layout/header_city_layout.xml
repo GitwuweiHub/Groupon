@@ -4,8 +4,8 @@
     android:layout_height="?attr/actionBarSize">
     <ImageView
         android:id="@+id/iv_back"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:src="@drawable/ic_web_back"
         android:layout_centerVertical="true"
         android:scaleType="fitXY"/>
@@ -16,7 +16,7 @@
         android:gravity="center_vertical">
         <TextView
             android:id="@+id/tv_china"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="国内"
             android:textColor="#ffffff"
@@ -25,7 +25,7 @@
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/tv_foreign"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="海外"
             android:textColor="#232323"

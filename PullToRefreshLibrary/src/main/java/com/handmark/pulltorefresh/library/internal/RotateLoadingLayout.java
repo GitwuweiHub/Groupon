@@ -122,9 +122,11 @@ public class RotateLoadingLayout extends LoadingLayout {
 			//利用原始图片创建一个ScaleDrawble图片
 			//---------------------方法三--------------------
 //			Drawable drawable = getResources().getDrawable(id);
-//			drawable.setLevel(100);//设置原长宽为100
+//			drawable.setLevel(100);//设置原长宽为100，放在这里在eclipse中也可以出效果
 			//第二个参数为缩放中心点，后俩个个参数为缩放倍数
 //			ScaleDrawable sd = new ScaleDrawable(drawable, Gravity.CENTER,0.5f,0.5f);
+//			drawable.setLevel(100);//设置原长宽为100,放在这里可以出效果
+
 //			mHeaderImage.setImageDrawable(sd);
 		}else{
 			int resId = resIds[10];

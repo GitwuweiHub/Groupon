@@ -2,6 +2,8 @@ package cn.w_wei.groupon.util;
 
 import java.util.Map;
 
+import cn.w_wei.groupon.bean.BusinessBean;
+import cn.w_wei.groupon.bean.DistrictBean;
 import cn.w_wei.groupon.bean.TuanBean;
 import cn.w_wei.groupon.entity.Province;
 import retrofit2.Call;
@@ -44,5 +46,11 @@ public interface NetService {
 
     @GET("china")
     public Call<String> getProvinces();
+
+    @GET("business/find_businesses")
+    public Call<BusinessBean> getFoods(@QueryMap Map<String,String> params);
+
+    @GET("metadata/get_regions_with_businesses")
+    public Call<DistrictBean> getDistricts(@QueryMap Map<String,String> params);
 
 }

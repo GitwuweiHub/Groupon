@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="200dp"
+    android:layout_height="120dp"
+    android:background="#ffaeaeae">
+    <TextView
+        android:id="@+id/tv_info_name"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="商户名字"
+        android:textSize="15sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tv_info_phone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="商户电话"
+        android:textSize="15sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tv_info_address"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="商户地址"
+        android:textSize="15sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tv_info_distance"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="商户距离"
+        android:textSize="15sp"
+        android:gravity="center"/>
+
+</LinearLayout>

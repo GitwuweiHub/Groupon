@@ -1,5 +1,6 @@
 package cn.w_wei.groupon.util;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,6 +15,8 @@ import java.util.Map;
 import java.util.Set;
 
 import cn.w_wei.groupon.app.MyApp;
+import cn.w_wei.groupon.bean.BusinessBean;
+import cn.w_wei.groupon.bean.DistrictBean;
 import cn.w_wei.groupon.bean.TuanBean;
 import cn.w_wei.groupon.config.Constant;
 import okhttp3.HttpUrl;
@@ -247,6 +250,24 @@ public class RetrofitClient {
 
             return chain.proceed(newRequest);
         }
+    }
+
+    public void getFoods(String city, String region, Callback<BusinessBean> callback){
+        Map<String,String> params = new HashMap<>();
+        params.put("city",city);
+        params.put("category","美食");
+        if(!TextUtils.isEmpty(region)){
+            params.put("region",region);
+        }
+        Call<BusinessBean> call = netService.getFoods(params);
+        call.enqueue(callback);
+    }
+
+    public void getDistricts(String city, Callback<DistrictBean> callback){
+        Map<String,String> params = new HashMap<>();
+        params.put("city",city);
+        Call<DistrictBean> call = netService.getDistricts(params);
+        call.enqueue(callback);
     }
 
 }

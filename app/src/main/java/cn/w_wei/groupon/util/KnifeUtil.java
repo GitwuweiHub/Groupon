@@ -1,7 +1,6 @@
 package cn.w_wei.groupon.util;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 
@@ -9,7 +8,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import cn.w_wei.groupon.adapter.DealAdapter;
 
 public class KnifeUtil {
 

@@ -89,7 +89,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> im
     /**
      *
      * @param viewGroup
-     * @param i 添加到recyclerview条目的类型
+     * @param i 添加到recyclerview条目的类型，调用getItemViewType方法来得到所需的返回值
      * @return
      */
     @Override
@@ -177,5 +177,8 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> im
 //            throw new RuntimeException("不允许添加多个头部！");
 
         }
+    }
+    public View getHeaderView(){
+        return headerView;
     }
 }
